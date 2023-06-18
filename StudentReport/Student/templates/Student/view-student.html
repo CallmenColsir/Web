@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}Student Report{% endblock %}
+
+{% block body %}
+    <h1>Total Student(s): {{ data|length }}</h1>
+    <ul>
+        {% for i in data %}
+            <li>
+                <a href="{% url 'detail-student' i.id%}">{{ i.name }}</a>
+                <form method='POST' action="/delete/{{i.id}}/" style="display: inline;">{% csrf_token %}
+                    <button type='submit'>Delete</button>
+                </form> 
+            </li><br>                      
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}"><button>home</button></a>
+
+{% endblock %}
