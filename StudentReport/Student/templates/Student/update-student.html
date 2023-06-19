@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block title %}Update{% endblock %}
+
+{% block body %}
+    <form method="POST" action='{% url 'ready-update' data.id %}'>{% csrf_token %}
+        <input name="name" placeholder="Name: " value="{{ data.name }}" required><br>
+        <input name="age" placeholder="Age: " value="{{ data.age }}" required><br>
+        <input name="major" placeholder="Major: " value="{{ data.major }}" required><br>
+
+        <button type="submit">save</button>
+    </form>
+
+{% endblock %}
