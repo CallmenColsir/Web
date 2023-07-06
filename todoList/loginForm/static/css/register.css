@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Ubuntu;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    border: 1px solid black;
+    padding: 30px;
+    border-radius: 6px;
+}
+
+label {
+    margin-left: 9px;
+}
+
+#form input, button{
+    width: 300px;
+    height: 30px;
+    margin: 9px;
+    border-radius: 3px;
+}
+
+#form input{
+    border: 1px solid black;
+    padding: 6px;
+}
+
+#form button {
+    background-color: white;
+    color: blue;
+    border: 1px solid blue;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+#form button:hover{
+    background-color: blue;
+    color: white;
+}
+
+.bottom {
+    padding-top: 12px;
+}
+.bottom p, a{
+    display: inline;
+}

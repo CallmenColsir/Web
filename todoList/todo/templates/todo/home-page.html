@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "/css/homePage.css" %}">
+    <title>Home Page</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+
+        <div class="header">
+            <h1>Hello, {{ user.username }}</h1>
+
+            <div class="addItem">
+                <form action="{% url "add-items" %}" method="post" id="input-form">
+                    {% csrf_token %}   
+                    <input type="text" name="item" id="item">
+                    <button type="submit">ADD</button>
+                </form>
+            </div>
+
+            <div class="showItem">
+                {% for item in userItems %}
+                    <div class="items">
+                        <div id="text">
+                            <p>{{ item.text }}</p>
+                        </div>
+
+                        <form method="post" action="/delete/{{ item.pk }}" id="delete-form">{% csrf_token %}
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                {% empty %}
+                    no task
+                {% endfor %}
+            </div>
+                       
+        </div>
+        <div class="logout">
+            <a href="{% url "logout-form" %}"><button>Logout</button></a>
+        </div>
+        
+        
+    {% else %}
+        <script>
+            window.location = "http://127.0.0.1:8000/login";
+        </script>
+    {% endif %}
+
+    <script src="{% static "/js/homePage.js" %}"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "/css/register.css" %}">
+    <title>Register Page</title>
+</head>
+<body>
+    <h1 style="margin-bottom: 12px;">Register Page</h1>
+    {% for message in messages %}
+        <p style="color: red; margin-bottom: 6px;">{{ message }}</p>
+    {% endfor %}
+    <div class="container">
+        <form method="post" id="form">{% csrf_token %}
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username"><br>
+
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email"><br>
+
+            <label for="password1">Password</label><br>
+            <input type="password" id="password1" name="password1"><br>
+
+            <label for="password2">Confirm Password</label><br>
+            <input type="password" id="password2" name="password2"><br>
+
+            <button type="submit" id="submit">Register</button>
+        </form>
+    </div>
+    <div class="bottom">
+        <p>Already have account?</p>
+        <a href="{% url "login-form" %}">Login</a>
+    </div>
+
+
+    <script src="{% static "/js/register-form.js" %}"></script>
+</body>
+</html>
